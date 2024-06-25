@@ -1,0 +1,19 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.achievement {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.achievement img {
+    max-width: 100%;
+    height: auto;
+}
+
+.achievement-description {
+    margin-top: 10px;
+}
