@@ -1,3 +1,4 @@
+import FourzeroFour from './component/fourzerofour';
 import OurAdmin from './pages/OurAdmin';
 import logo from './logo.svg';
 import './App.css';
@@ -57,6 +58,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
+        <Route path='*' element={<FourzeroFour/>}/>
         <Route path='/DeleteTestParent' element={<DeleteTestinomials/>}/>
         <Route path='/' element={<Home/>}/>
         <Route path='/one' element={<One/>}/>
