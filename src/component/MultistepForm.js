@@ -3,8 +3,18 @@
  
 import React, { useState } from 'react';
 import { Form, Button, ProgressBar } from 'react-bootstrap';
-
+import StripeCheckout from 'react-stripe-checkout';
 const MultiStepForm = () => {
+ const onToken = (token) => {
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`We are in business, ${data.email}`);
+      });
+    });
+  }
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
 
@@ -59,6 +69,7 @@ const MultiStepForm = () => {
             value={formData.message}
             onChange={handleInputChange}
           />
+        
         </Form.Group>
       )}
       
@@ -95,10 +106,14 @@ const MultiStepForm = () => {
             Next
           </Button>
         ) : (
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        )}
+              <div>
+              <button variant="primary" color='white'>Submit</button>
+              <StripeCheckout
+              token={onToken}
+              stripeKey='pk_test_51PWCeJFMdrEWu2JvfMVFj9zRzSouAkSI6iSj2uPN8mHfpSrU0D7OwyTI9kBTQijzC95m6VP0mo9CCfY8iiJKgCzl00blw9aw5f'
+                />
+            </div>
+          )}
       </div>
     </Form>
   );

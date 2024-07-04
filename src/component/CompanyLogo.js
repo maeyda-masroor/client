@@ -31,19 +31,19 @@ export default function CompanyLogo () {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToShow: 5,
+    slidesToScroll: 5
   };
   return (
     <div style={{padding:'50px'}}>
-    <Slider {...settings}>
-    <div style={{width:'100%',height:'10px',backgroundColor:'#FF0000'}}>
-    {Test.map((record, index) => (
-        <h3 style={{backgroundColor:'green',color:'white'}} class="">{record.name}<br/>{record.designation}<br/>{record.review}</h3>
-
-    ))}
-    </div>
-    </Slider>
+      <Slider {...settings}>
+        {Test.map(record => {
+          return (
+            <h3 style={{backgroundColor:'green',color:'white'}} class="">{record.name}<br/>{record.designation}<br/>{record.review}</h3>
+          );
+        })}
+      </Slider>
+    
     </div>
   );
 }

@@ -1,33 +1,75 @@
+import React from 'react';
+import { useState } from 'react';
+
 function Contactus(){
-    return <div>
+  const CHARACTER_LIMIT = 1000;
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname:"",
+    emailAddress_phonenumber:'',
+    date:'',
+    message: ""
+  });
+  const [numberEmptyError, setNumberEmptyError] = useState(false);
+  const [messageEmptyError, setMessageEmptyError] = useState(false);
+  const { firstname,lastname,emailAddress_phonenumber,date,message} = formData;
+  const onChange = (e) => {
+    e.preventDefault();
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (emailAddress_phonenumber.length < 1) {
+      setNumberEmptyError(true);
+      setTimeout(() => setNumberEmptyError(false), 3000);
+    } else if (message.length < 1) {
+      setMessageEmptyError(true);
+      setTimeout(() => setMessageEmptyError(false), 3000);
+    }
+      else {
+      
+          // Regex expression to remove all characters which are NOT alphanumeric 
+            //let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
+      
+          // Appending the phone number to the URL
+            let url = `https://web.whatsapp.com/send?phone=03197134823`;
+            url += `&text=${encodeURI("firstname:"+firstname+'<br/>'+"lastname"+lastname+"emailaddress/phonenumber"+emailAddress_phonenumber+"date"+date+"message"+message)}&app_absent=0`;
+            window.open(url);
+          }
+        };
+     
+   return <div>
        <div class="site-section">
       <div class="container">
         
         <div class="row">
           <div class="col-lg-8 mb-5" >
-            <form action="#" method="post">
+            <form>
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name"/>
+                  <input type="text" class="form-control" placeholder="First name" value={firstname}/>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="First name"/>
+                  <input type="text" class="form-control" placeholder="First name" value={lastname}/>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Email address"/>
+                  <input type="text" class="form-control" placeholder="Email address" value={emailAddress_phonenumber}/>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                    <input type="date" class="form-control" placeholder="Date"/>
+                    <input type="date" class="form-control" placeholder="Date" value={date}/>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
+                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10" maxLength={CHARACTER_LIMIT}></textarea>
                 </div>
               </div>
               <div class="form-group row">

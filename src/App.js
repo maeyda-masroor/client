@@ -22,6 +22,7 @@ import Gallery from './component/Galleery';
 import OurTeam from './pages/OurTeam';
 import OurBoardOfTrustee from './pages/OurBoardOfTrustee';
 import FAQs from './pages/FAQ';
+import One from './pages/one';
 import OurSponserForm from './pages/OurSponserForm';
 import React, { Suspense } from 'react';
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/one' element={<One/>}/>
         <Route path='/OurSponserForm' element={<OurSponserForm/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/scholarshipForm' element={<ScholarshipForm/>}/>
