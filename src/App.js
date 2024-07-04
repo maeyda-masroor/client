@@ -1,3 +1,4 @@
+import OurAdmin from './pages/OurAdmin';
 import logo from './logo.svg';
 import './App.css';
 import TopNavbar from './component/TopNavbar';
@@ -26,6 +27,8 @@ import One from './pages/one';
 import OurSponserForm from './pages/OurSponserForm';
 import { useState } from 'react';
 import React, { Suspense } from 'react';
+import DeleteSponsers from './pages/DeleteSponsers';
+import DeleteTestinomials from './pages/DeleteTestinomials';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const centerDivStyle = {
@@ -54,6 +57,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
+        <Route path='/DeleteTestParent' element={<DeleteTestinomials/>}/>
         <Route path='/' element={<Home/>}/>
         <Route path='/one' element={<One/>}/>
         <Route path='/OurSponserForm' element={<OurSponserForm/>}/>
@@ -64,6 +68,8 @@ function App() {
         <Route path='/New_Stories' element={<News_Stories/>}/>
         <Route path='/addtestinomials' element={<Addtestinomials/>}/>
         <Route path='/ourprogram' element={<OurProgram/>}/>
+        <Route path='/adminForNoorFoundation' element={<OurAdmin/>}/>
+        <Route path='/deleteSponserData' element={<DeleteSponsers/>}/>
         <Route path='/contactus' element={<Contactus/>}/>
         <Route path='/makeAnAppointment' element={<MakeAnAppoitment/>}/>
         <Route path='/our' element={<Acheivements/>}/>

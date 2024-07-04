@@ -33,6 +33,8 @@
     "save": "^2.9.0",
     "slick-carousel": "^1.8.1",
     "stripe": "^16.0.0",
+    "styled-components": "^6.1.11",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

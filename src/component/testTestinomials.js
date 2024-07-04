@@ -8,16 +8,21 @@ import {db} from '../config/firebase';
 import './Testinomials.css';
 import { useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
+
 export default function CompanyLogo () {
+  
   const [Test,setTest]= useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const testinomialsCollectionRef = collection(db,"NoorFoundations");
   const getTestList = async()=>{
     try{
+      setIsLoading(true);
       const data = await getDocs(testinomialsCollectionRef);
       const filterdata = data.docs.map((doc)=>({
         ...doc.data(),id:doc.id
       }))
       setTest(filterdata);
+      setIsLoading(false);
       console.log(filterdata);
     }
     catch(err){
@@ -37,6 +42,7 @@ export default function CompanyLogo () {
   return (
     <div style={{padding:'50px'}}>
     <center><h1>Testinomials of Parents and students</h1></center>
+    {isLoading? <center><div class="dot-elastic"></div></center>:null}
       <Slider {...settings}>
         {Test.map(record => {
           return (

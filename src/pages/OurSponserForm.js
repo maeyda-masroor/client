@@ -4,6 +4,7 @@ import {
   collection,
   addDoc
 } from "firebase/firestore";
+import swal from 'sweetalert';
 function OurSponserForm(){
   const [name, setName] = useState("");
   const [designation,setDesignation] = useState("");
@@ -17,6 +18,7 @@ function OurSponserForm(){
         designation: designation,
         review:review
       });
+      swal(" Sponsers Testinomial Data saved!", "Your data will be shown in main page", "success") 
     } catch (err) {
       console.error(err);
       console.log("err");

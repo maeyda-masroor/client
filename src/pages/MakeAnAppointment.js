@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-
+import swal from 'sweetalert';
 function Contactus(){
   const CHARACTER_LIMIT = 1000;
   const [formData, setFormData] = useState({
@@ -35,9 +35,10 @@ function Contactus(){
             //let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
       
           // Appending the phone number to the URL
-            let url = `https://web.whatsapp.com/send?phone=03197134823`;
-            url += `&text=${encodeURI("firstname:"+firstname+'<br/>'+"lastname"+lastname+"emailaddress/phonenumber"+emailAddress_phonenumber+"date"+date+"message"+message)}&app_absent=0`;
+            let url = `https://web.whatsapp.com/send?phone=+923197134823`;
+            url += `&text=${encodeURI("firstname:  "+firstname+' '+"lastname    "+lastname+"  "+"emailaddress/phonenumber:     "+emailAddress_phonenumber +"  "+"date:    "+date+" "+"message:   "+message)}`;
             window.open(url);
+            swal("Make an Appointment data saved","send to whatsapp to Admin","success");
           }
         };
      
@@ -50,31 +51,38 @@ function Contactus(){
             <form>
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name" value={firstname}/>
+                  <input type="text" class="form-control" placeholder="First name" name='firstname'value={firstname} onChange={onChange}/>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="First name" value={lastname}/>
+                  <input type="text" class="form-control" placeholder="First name" name='lastname'value={lastname} onChange={onChange}/>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Email address" value={emailAddress_phonenumber}/>
+                  <input type="text" class="form-control" placeholder="Email addres" name='emailAddress_phonenumber' value={emailAddress_phonenumber} onChange={onChange}/>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                    <input type="date" class="form-control" placeholder="Date" value={date}/>
+                    <input type="date" class="form-control" placeholder="Date" name='date' value={date} onChange={onChange}/>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10" maxLength={CHARACTER_LIMIT}></textarea>
+                  <textarea  id="" class="form-control" placeholder="Write your message." name='message' value={message}cols="30" rows="10" maxLength={CHARACTER_LIMIT} onChange={onChange}></textarea>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6 mr-auto">
-                  <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5 rounded-0" value="Send Message"/>
+                <button
+            onClick={onSubmit}
+            variant='outlined'
+            color='success'
+            size='small'
+          >
+            Send
+          </button>
                 </div>
               </div>
             </form>

@@ -4,6 +4,7 @@ import {
   collection,
   addDoc
 } from "firebase/firestore";
+import swal from 'sweetalert';
 function Addtestinomials(){
   const [name, setName] = useState("");
   const [designation,setDesignation] = useState("");
@@ -17,10 +18,12 @@ function Addtestinomials(){
         designation: designation,
         review:review
       });
+      swal(" Parent Testinomial Data saved!", "Your data will be shown in main page", "success")
     } catch (err) {
       console.error(err);
       console.log("err");
     }
+    
   };
     return <div className="site-section">
       
