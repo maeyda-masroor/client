@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 export default function CompanyLogo () {
   const [Test,setTest]= useState([]);
-  const testinomialsCollectionRef = collection(db,"SponserData");
+  const testinomialsCollectionRef = collection(db,"NoorFoundations");
   const getTestList = async()=>{
     try{
       const data = await getDocs(testinomialsCollectionRef);
@@ -36,7 +36,7 @@ export default function CompanyLogo () {
   };
   return (
     <div style={{padding:'50px'}}>
-      <center><h1>Sponser Testinomials</h1></center>
+    <center><h1>Testinomials of Parents and students</h1></center>
       <Slider {...settings}>
         {Test.map(record => {
           return (

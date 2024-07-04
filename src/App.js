@@ -24,10 +24,39 @@ import OurBoardOfTrustee from './pages/OurBoardOfTrustee';
 import FAQs from './pages/FAQ';
 import One from './pages/one';
 import OurSponserForm from './pages/OurSponserForm';
+import { useState } from 'react';
 import React, { Suspense } from 'react';
+import Loader from "./component/Loading";
 function App() {
-  return (
-    <Suspense fallback="loading">
+  const [isLoading, setIsLoading] = useState(true);
+  const centerDivStyle = {
+    height: "300px",
+    display: "flex",
+    justifyContent: "center",
+    alignitems: "center",
+    paddingTop:'170px',
+    paddingLeft:'10px'
+  
+  };
+    setTimeout(() => {
+        setIsLoading(false);
+    }, 2000);
+    return (
+        <div
+            style={{
+                textAlign: "center",
+                margin: "auto",
+            }}
+        >
+            
+            {isLoading ? (
+
+        <div style={centerDivStyle}>
+        <h1 style={{fontFamily:'serif',color:'green'}}> Welcome to Noor Education and Healthcare foundation </h1>
+        <br/>
+        </div>
+      ):(
+    <div>
     <BrowserRouter>
       <Navbar/>
       <Routes>
@@ -54,8 +83,12 @@ function App() {
       </Routes>
       <Footer/>
     </BrowserRouter>
-    </Suspense>
-  );
+    </div>
+  )  
+};
+</div>
+    );
 }
+ 
 
 export default App;

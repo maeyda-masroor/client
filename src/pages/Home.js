@@ -6,6 +6,7 @@ import TheImpact from './TheImpact';
 import CEOMessage from '../component/CEOMessage';
 import OurProvenSuccess from '../component/OurProvenSuccess';
 import Testinomials from '../component/Testinomials';
+import TestTest from '../component/testTestinomials';
 import CompanyLogo from '../component/CompanyLogo';
 function Home(){
     return <div>
@@ -14,9 +15,8 @@ function Home(){
         <CEOMessage/>
         <DonateBox/>
         <TheImpact/>
-        <OurProvenSuccess/>
         <AnnualReport/>
-        <Testinomials/>
+        <TestTest/>
         <CompanyLogo/>
     </div>
 }
