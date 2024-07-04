@@ -26,7 +26,6 @@ import One from './pages/one';
 import OurSponserForm from './pages/OurSponserForm';
 import { useState } from 'react';
 import React, { Suspense } from 'react';
-import Loader from "./component/Loading";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const centerDivStyle = {
@@ -42,12 +41,7 @@ function App() {
         setIsLoading(false);
     }, 2000);
     return (
-        <div
-            style={{
-                textAlign: "center",
-                margin: "auto",
-            }}
-        >
+        <div>
             
             {isLoading ? (
 
