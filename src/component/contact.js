@@ -1,6 +1,6 @@
 import React from 'react'
 import emailjs from 'emailjs-com';
-
+import swal from 'sweetalert';
 
 const SERVICE_ID = "service_4vhir4e"; //Enter your Service ID
 const TEMPLATE_ID = "template_og36h0t"; //Enter your Template ID
@@ -12,10 +12,10 @@ const ContactForm = () => {
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
           .then((result) => {
             console.log(result.text);
-            alert('Message Sent Successfully')
+            swal('Email send to iosattbsoft2021@gmail.com','Message Sent Successfully',"success")
           }, (error) => {
             console.log(error.text);
-            alert('Something went wrong!')
+            swal("email not send to iosattbsoft2021@gmail.com",'Something went wrong!',"error")
           });
         e.target.reset()
       };

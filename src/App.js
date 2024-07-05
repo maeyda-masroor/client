@@ -1,3 +1,4 @@
+import AddAcheivement from './pages/AddAcheivement';
 import Contact from './component/contact';
 import FourzeroFour from './component/fourzerofour';
 import OurAdmin from './pages/OurAdmin';
@@ -59,6 +60,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
+        <Route path = "/addAcheivement" element={<AddAcheivement/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='*' element={<FourzeroFour/>}/>
         <Route path='/DeleteTestParent' element={<DeleteTestinomials/>}/>
