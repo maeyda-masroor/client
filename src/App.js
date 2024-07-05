@@ -1,3 +1,4 @@
+import Contact from './component/contact';
 import FourzeroFour from './component/fourzerofour';
 import OurAdmin from './pages/OurAdmin';
 import logo from './logo.svg';
@@ -58,6 +59,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
+        <Route path='/contact' element={<Contact/>}/>
         <Route path='*' element={<FourzeroFour/>}/>
         <Route path='/DeleteTestParent' element={<DeleteTestinomials/>}/>
         <Route path='/' element={<Home/>}/>
