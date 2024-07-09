@@ -1,21 +1,27 @@
 import {db} from '../config/firebase';
-import { useState } from 'react';
 import {
   collection,
   addDoc
 } from "firebase/firestore";
 import swal from 'sweetalert';
+import React, { useState } from 'react'
+import { Rating } from 'react-simple-star-rating'
 function Addtestinomials(){
   const [name, setName] = useState("");
+  const [rating, setRating] = useState(0)
   const [designation,setDesignation] = useState("");
   const [review,setReview] = useState("");
   const testinomialsCollectionRef = collection(db,"NoorFoundations");
+  const handleRating = (rate) => {
+    setRating(rate)
+  }
   const submitTestinomials = async (e) => {
     e.preventDefault();
     try {
       await addDoc(testinomialsCollectionRef, {
         name: name,
         designation: designation,
+        rating:rating,
         review:review
       });
       swal(" Parent Testinomial Data saved!", "Your data will be shown in main page", "success")
@@ -40,6 +46,11 @@ function Addtestinomials(){
                 <div className="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
                     <input type="text" className="form-control"placeholder="Designation" onChange={(e)=>setDesignation(e.target.value)}/>
+                </div>
+                </div>
+                <div className='form-group row'>
+                <div class="col-md-6 mb-4 mb-lg-0">
+                <Rating onClick={handleRating}/>
                 </div>
                 </div>
               <div className="form-group row">

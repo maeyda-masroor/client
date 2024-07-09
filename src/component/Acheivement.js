@@ -24,12 +24,13 @@ function Acheivements(){
     console.log(data,"datadata")
 
     return <div class="site-section">
-         {isLoading? <center><div class="dot-elastic"></div></center>:null}
+        
         <div class="container">
+        {isLoading? <center><div class="dot-elastic"></div></center>:null}
         <div class="grid-container">
         {
                 data.map(value=><div>
-                     <img src={value.imgUrl} height='200px' width='200px' /> 
+                  <div><img src={value.imgUrl} height='200px' width='200px' /></div> 
                     <div class= "acheivement-description"><p>{value.txt}</p></div>
                    
                 </div>)

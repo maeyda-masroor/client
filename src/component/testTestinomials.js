@@ -8,7 +8,7 @@ import {db} from '../config/firebase';
 import './Testinomials.css';
 import { useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-
+import Rating from '@prontopro/react-rating'
 export default function CompanyLogo () {
   
   const [Test,setTest]= useState([]);
@@ -46,7 +46,12 @@ export default function CompanyLogo () {
       <Slider {...settings}>
         {Test.map(record => {
           return (
-            <div><h3 style={{backgroundColor:'green',color:'white',margin:'10px'}} class="">{record.name}<br/>{record.designation}<br/>{record.review}</h3></div>
+            <div><h3 style={{backgroundColor:'white',color:'black',margin:'10px'}} class="">{record.name}<br/>{record.designation}<br/><Rating
+            animateOnHover
+            disableAnimation
+            initialRate={record.rating}
+            stop={5}
+          /></h3></div>
           );
         })}
       </Slider>

@@ -6,6 +6,8 @@ import logo from './logo.svg';
 import './App.css';
 import TopNavbar from './component/TopNavbar';
 import Navbar from './component/Navbar';
+import React from 'react'
+import Confetti from 'react-confetti'
 import {BrowserRouter, Routes , Route} from 'react-router-dom';
 import Home from './pages/Home';
 import ScholarshipForm1 from './component/ScholarshipForm1';
@@ -29,10 +31,11 @@ import FAQs from './pages/FAQ';
 import One from './pages/one';
 import OurSponserForm from './pages/OurSponserForm';
 import { useState } from 'react';
-import React, { Suspense } from 'react';
+
 import DeleteSponsers from './pages/DeleteSponsers';
 import DeleteTestinomials from './pages/DeleteTestinomials';
 function App() {
+ 
   const [isLoading, setIsLoading] = useState(true);
   const centerDivStyle = {
     height: "300px",
@@ -45,15 +48,17 @@ function App() {
   };
     setTimeout(() => {
         setIsLoading(false);
-    }, 2000);
+    }, 5000);
     return (
         <div>
             
             {isLoading ? (
-
+        <div>
+        <Confetti/>
         <div style={centerDivStyle}>
         <h1 style={{fontFamily:'serif',color:'green'}}> Welcome to Noor Education and Healthcare foundation </h1>
         <br/>
+        </div>
         </div>
       ):(
     <div>
