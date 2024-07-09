@@ -8,7 +8,7 @@ import {db} from '../config/firebase';
 import './Testinomials.css';
 import { useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import Rating from '@prontopro/react-rating'
+
 export default function CompanyLogo () {
   
   const [Test,setTest]= useState([]);
