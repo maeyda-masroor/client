@@ -46,11 +46,11 @@ export default function CompanyLogo () {
       <Slider {...settings}>
         {Test.map(record => {
           return (
-            <div><h3 style={{backgroundColor:'white',color:'black',margin:'10px'}} class="">{record.name}<br/>{record.designation}<br/><Rating
-            animateOnHover
-            disableAnimation
-            initialRate={record.rating}
-            stop={5}
+            <div><h3 style={{backgroundColor:'white',color:'black',margin:'10px'}} class="">{record.name}<br/>{record.designation}<br/> <StarRatings
+            rating={record.rating}
+            starRatedColor="blue"
+            numberOfStars={5}
+            name='rating'
           /></h3></div>
           );
         })}
