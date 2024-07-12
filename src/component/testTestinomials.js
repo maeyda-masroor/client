@@ -1,10 +1,11 @@
-import '@coreui/coreui/dist/css/coreui.min.css'
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import StarRatings from 'react-star-ratings';
 import Slider from "react-slick";
 import React, { useState } from 'react';
 import {db} from '../config/firebase';
+import Firebase from '../config/firebase';
 import './Testinomials.css';
 import { useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
@@ -23,7 +24,7 @@ export default function CompanyLogo () {
       }))
       setTest(filterdata);
       setIsLoading(false);
-      console.log(filterdata);
+   
     }
     catch(err){
       console.log("eer");

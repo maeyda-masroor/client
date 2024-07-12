@@ -8,6 +8,7 @@ import OurProvenSuccess from '../component/OurProvenSuccess';
 import Testinomials from '../component/Testinomials';
 import TestTest from '../component/testTestinomials';
 import CompanyLogo from '../component/CompanyLogo';
+import Scorecard from '../component/scoreCard';
 function Home(){
     return <div>
         <Header/>
@@ -17,7 +18,7 @@ function Home(){
         <TheImpact/>
         <AnnualReport/>
         <TestTest/>
-        <CompanyLogo/>
+        <Scorecard/>
     </div>
 }
 export default Home;

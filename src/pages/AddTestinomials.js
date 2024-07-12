@@ -1,7 +1,7 @@
-import {db} from '../config/firebase';
+import {db,db1} from '../config/firebase';
 import {
   collection,
-  addDoc
+  addDoc ,getDocs
 } from "firebase/firestore";
 import swal from 'sweetalert';
 import React, { useState } from 'react'
@@ -11,10 +11,12 @@ function Addtestinomials(){
   const [rating, setRating] = useState(0)
   const [designation,setDesignation] = useState("");
   const [review,setReview] = useState("");
+  const [userid,setitemid] = useState(0);
   const testinomialsCollectionRef = collection(db,"NoorFoundations");
   const handleRating = (rate) => {
-    setRating(rate)
-  }
+    setRating(rate);
+  } 
+  
   const submitTestinomials = async (e) => {
     e.preventDefault();
     try {
@@ -24,13 +26,12 @@ function Addtestinomials(){
         rating:rating,
         review:review
       });
-      swal(" Parent Testinomial Data saved!", "Your data will be shown in main page", "success")
+    swal(" Parent Testinomial Data saved!", "Your data will be shown in main page", "success");;
     } catch (err) {
       console.error(err);
       console.log("err");
     }
-    
-  };
+  }
     return <div className="site-section">
       
     <div className="container">
