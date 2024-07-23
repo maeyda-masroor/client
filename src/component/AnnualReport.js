@@ -1,21 +1,19 @@
-import {Link} from 'react-router-dom'
-import React from "react"; 
-const AnnualReport = () => {
-    let currentYear = new Date().getFullYear();
-    let url = "https://drive.google.com/file/d/1h1E5xEGbyYzejVE8_BkqMkrdgpDT8WZ6/view?usp=sharing"; 
-    return ( 
-        <div style={{padding:'10px',margin:'10px'}}> 
-            <center> 
-                <h1 class="">Our Newsletter For year {currentYear}</h1> 
-                <h3 class="">Click on below link to open 
-                    PDF file in new tab</h3> 
-                <Link to={url} target="_blank"
-                    rel="noreferrer"> 
-                    Open Newsletter
-                </Link> <br></br> 
-            </center> 
-        </div> 
-    ); 
-}; 
-  
-export default AnnualReport;
+
+import { EmbedPDF } from "@simplepdf/react-embed-pdf";
+const App = () => {
+    var pdf = "https://drive.google.com/file/d/1h1E5xEGbyYzejVE8_BkqMkrdgpDT8WZ6/view?pli=1";
+	
+	return (<center>
+		<div style={{width:'200px',height:'500px',padding:'10px',margin:'10px'}}>
+			<EmbedPDF
+  mode="inline"
+  style={{ width: 200, height: 500 }}
+  documentURL={pdf}
+/>
+			
+		</div>
+        </center>
+	);
+};
+
+export default App;

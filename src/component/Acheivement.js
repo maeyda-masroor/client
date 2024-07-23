@@ -1,6 +1,6 @@
 import './A.css';
 import './Testinomials.css';
-
+import FlipMove from 'react-flip-move';
 import { useState ,useEffect} from 'react';
 import { imgDb ,db } from "../config/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -27,7 +27,9 @@ function Acheivements(){
         
         <div class="container">
         {isLoading? <center><div class="dot-elastic"></div></center>:null}
+        
         <div class="grid-container">
+        <FlipMove easing="cubic-bezier(0, 1, 1, 1)">
         {
                 data.map(value=><div>
                   <div><img src={value.imgUrl} height='200px' width='200px' /></div> 
@@ -35,9 +37,9 @@ function Acheivements(){
                    
                 </div>)
         }
-    
+    </FlipMove>
         </div>
-
+        
         </div>
         </div>
 }

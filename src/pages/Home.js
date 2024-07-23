@@ -16,6 +16,7 @@ function Home(){
         <CEOMessage/>
         <DonateBox/>
         <TheImpact/>
+        <OurProvenSuccess/>
         <AnnualReport/>
         <TestTest/>
         <Scorecard/>

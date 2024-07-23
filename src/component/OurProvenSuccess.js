@@ -1,4 +1,12 @@
+import { motion } from "framer-motion";
+import CountUp from 'react-countup';
+import { useState } from "react";
+const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`;
+	const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`;
 function OurProvenSuccess(){
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+
     return <section class="py-3 py-md-5" style={{backgroundColor:'#c21809'}}>
       <div class="container">
         <div class="row justify-content-md-center">
@@ -13,7 +21,19 @@ function OurProvenSuccess(){
       <div class="container">
         <div class="row gy-4 gy-lg-0 align-items-lg-center">
           <div class="col-12 col-lg-6">
-            <img class="img-fluid rounded" loading="lazy" src="./images/12.jpg" alt="" width={'500px'} height={'200px'}/>
+          <motion.div
+        initial={false}
+        animate={
+          isLoaded && isInView
+            ? { WebkitMaskImage: visibleMask, maskImage: visibleMask }
+            : { WebkitMaskImage: hiddenMask, maskImage: hiddenMask }
+        }
+        transition={{ duration: 1, delay: 1 }}
+        viewport={{ once: true }}
+        onViewportEnter={() => setIsInView(true)}
+      >
+            <img class="img-fluid rounded" loading="lazy" src="./images/s.jpg" alt="" width={'250px'} height={'100px'}onLoad={() => setIsLoaded(true)}/>
+          </motion.div>
           </div>
           <div class="col-12 col-lg-6">
             <div class="row justify-content-xl-end">
@@ -22,13 +42,13 @@ function OurProvenSuccess(){
                   <div class="col-12 col-sm-6">
                     <div class="card border-0 border-bottom border-primary shadow-sm mb-4">
                       <div class="card-body text-center p-4 p-xxl-5">
-                        <h3 class="">80</h3>
+                        <h3 class=""><CountUp delay={2} end={80} /></h3>
                         <p class="">Students</p>
                       </div>
                     </div>
                     <div class="card border-0 border-bottom border-primary shadow-sm">
                       <div class="card-body text-center p-4 p-xxl-5">
-                        <h3 class="">5</h3>
+                        <h3 class=""><CountUp delay={2} end={5} /></h3>
                         <p class="">Programs</p>
                       </div>
                     </div>
@@ -36,13 +56,13 @@ function OurProvenSuccess(){
                   <div class="col-12 col-sm-6">
                     <div class="card border-0 border-bottom border-primary shadow-sm mt-lg-6 mt-xxl-8 mb-4">
                       <div class="card-body text-center p-4 p-xxl-5">
-                        <h3 class="">10</h3>
+                        <h3 class=""><CountUp delay={2} end={10} /></h3>
                         <p class="">Team Members</p>
                       </div>
                     </div>
                     <div class="card border-0 border-bottom border-primary shadow-sm">
                       <div class="card-body text-center p-4 p-xxl-5">
-                        <h3 class="">2</h3>
+                        <h3 class=""><CountUp delay={2} end={2} /></h3>
                         <p class="">Meetings</p>
                       </div>
                     </div>
