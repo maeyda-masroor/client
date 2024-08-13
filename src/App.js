@@ -50,9 +50,8 @@ function App() {
         setIsLoading(false);
     }, 5000);
     return (
-        <div>
-            
-            {isLoading ? (
+        <div> 
+        {isLoading ? (
         <div>
         <Confetti/>
         <div style={centerDivStyle}>

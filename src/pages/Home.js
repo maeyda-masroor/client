@@ -9,6 +9,7 @@ import Testinomials from '../component/Testinomials';
 import TestTest from '../component/testTestinomials';
 import CompanyLogo from '../component/CompanyLogo';
 import Scorecard from '../component/scoreCard';
+
 function Home(){
     return <div>
         <Header/>
@@ -17,7 +18,7 @@ function Home(){
         <DonateBox/>
         <TheImpact/>
         <OurProvenSuccess/>
-        <AnnualReport/>
+        <AnnualReport pdfPath = "AR2023.pdf"/> 
         <TestTest/>
         <Scorecard/>
     </div>

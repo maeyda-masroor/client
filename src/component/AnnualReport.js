@@ -1,19 +1,26 @@
 
-import { EmbedPDF } from "@simplepdf/react-embed-pdf";
-const App = () => {
-    var pdf = "https://drive.google.com/file/d/1h1E5xEGbyYzejVE8_BkqMkrdgpDT8WZ6/view?pli=1";
-	
-	return (<center>
-		<div style={{width:'200px',height:'500px',padding:'10px',margin:'10px'}}>
-			<EmbedPDF
-  mode="inline"
-  style={{ width: 200, height: 500 }}
-  documentURL={pdf}
-/>
-			
-		</div>
-        </center>
-	);
+import { useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.js",
+  import.meta.url,
+).toString();
+
+const AnnualReport = ({pdfPath}) => {
+  const [numPages, setNumPages] = useState(null);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+  return (
+    <div>
+      <Document file={pdfPath} onLoadSuccess={onDocumentLoadSuccess}>
+        {Array.from(new Array(numPages), (el, index) => (
+          <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+        ))}
+      </Document>
+    </div>
+  );
 };
 
-export default App;
+export default AnnualReport;

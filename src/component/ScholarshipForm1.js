@@ -1,4 +1,55 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 function scholarshipForm1(){
+  const [errorMessaagre, setErrorMessage] = React.useState("");
+    const [EmployeeName,setEmployeeName] = useState('');
+    const [EmployeeCode,setEmployeeCode] = useState('');
+    const [EmployeeEmail,setEmployeeEmail] = useState('');
+    const [PresentOrExEmployee,setPresentOrEx] = useState('');
+    const [DateofJoiningatPILL,setDateOfJoiningAtPill] = useState('');
+    const [Designation,setDesignation] = useState('');
+    const [Department,setDepartment] = useState('');
+    const [HusbandName,sethusbandName] = useState('');
+    const [HouseAddresofEmployee,setHouseAddressOfEmp] = useState('');
+    const [officialphonenumber,setofficalphonenumber] = useState('');
+    const [DetailsofAlreadyavailedscholarshipsfromPILL,setdetailofScholarshipPill] = useState('');
+    const [DetailsofavailedscholarshipsfromotherthanPILL,setdetailofScholarshipOfPillotherthanPill] = useState('');
+    const [Workplaceaddress,setworkplaceAddress] = useState('');
+    const [MonthlyIncome,setMonthlyIncome] = useState('');
+    const [OthersourcesofIncome,setOtherSourceOfincome]= useState('');
+    const [Father_Husband_Wifemonthlyincome,setfather_husband_wife_monthly_income] = useState('');
+    const [Detailoffamilymember,setdetailoffamilymember] = useState(''); 
+    const [residenceown_rented,setresidenceown_rented] = useState('');
+    const [Name_of_Institute_taking_Admission, setnameofinstitutetakingadmission] = useState('');
+    const [Nameofcourse,setnameofcourse] =useState('');
+    const [AddressofInstitute_Websiteofinstitute,setAddressofInstitute] = useState('');
+    const [Benefitstoorganizationfromthecourse,setbenefittoorganizationfromthecourse] = useState('');
+    const [RecommendationfromHR_Headofthedepartment,setRecommendationFormHR] =useState('');
+    const [dateofIssue,setDateOfIssue] = useState('');
+    const {
+      register,
+      handleSubmit,
+      formState: { errors }
+    } = useForm();
+    const onSubmit = (data) => {
+      console.log(data);
+         const objt = {EmployeeName,EmployeeCode,EmployeeEmail,PresentOrExEmployee,
+        DateofJoiningatPILL,Designation,Department,HusbandName,HouseAddresofEmployee,
+    officialphonenumber,DetailsofAlreadyavailedscholarshipsfromPILL,
+    DetailsofavailedscholarshipsfromotherthanPILL,Workplaceaddress,
+    MonthlyIncome,OthersourcesofIncome,Father_Husband_Wifemonthlyincome,
+    AddressofInstitute_Websiteofinstitute,Detailoffamilymember,residenceown_rented,Name_of_Institute_taking_Admission,
+    Nameofcourse,Benefitstoorganizationfromthecourse,RecommendationfromHR_Headofthedepartment
+    ,dateofIssue};	
+        axios.post('https://sheet.best/api/sheets/19c28d68-27d7-4b45-a162-29897d059e69',objt)
+        .then(response => {
+            console.log(response);
+        })
+  
+    };
     return <div class="container">
         <h1 class="text-cursive">Scholarship For Employee Themselves</h1>
         <i><p class="text-cursive" style={{color:'red'}}><b>
